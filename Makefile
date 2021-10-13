@@ -1,5 +1,5 @@
-#CC		= gcc
-NAME	= pipex
+CC		= gcc
+NAME	= fractol
 SRCS	= src/main.c
 
 OBJS		= $(SRCS:.c=.o)
@@ -17,8 +17,11 @@ all:	$(NAME)
 
 $(NAME): 	$(OBJS)
 	make bonus -C libft
-	make -C minilibx
-	$(CC) $(FLAGS) -L $(LIBFT) -o -framework OpenGL -framework AppKit -L libmlx $(NAME)
+	make -C libmlx
+	$(CC) $(FLAGS) $(LIBFT) libmlx/libmlx.a -framework OpenGL -framework AppKit $(OBJS) -o $(NAME)
+#
+
+#   -lmlx
 
 
 .c.o:
@@ -33,7 +36,7 @@ clean:
 fclean:	clean
 		$(RM) $(NAME)
 		make fclean -C libft
-		make fclean -C libmlx
+#make fclean -C libmlx
 
 re:		fclean all
 

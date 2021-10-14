@@ -1,5 +1,15 @@
 #include "../includes/fractol.h"
 
+int 	julia(t_vars vars)
+{
+
+}
+
+int		mandelbrot(t_vars vars)
+{
+
+}
+
 int rend_pic(t_vars *vars)
 {
 	vars->img = mlx_new_image(vars->mlx, 1280, 800);

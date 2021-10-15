@@ -1,16 +1,30 @@
 #include "../includes/fractol.h"
 
-int 	julia(t_vars vars)
-{
+//int 	julia(t_vars *vars)
+//{
+//	return(0);
+//}
 
+int		mandelbrot(t_vars *vars)
+{
+	int	x;
+	int y;
+	int	color;
+
+	y = 0;
+	while (y < 1200)
+	{
+		x = 0;
+		while (x < 800)
+		{
+			color =
+		}
+	}
+
+	return(0);
 }
 
-int		mandelbrot(t_vars vars)
-{
-
-}
-
-int rend_pic(t_vars *vars)
+int expose_hook(t_vars *vars)
 {
 	vars->img = mlx_new_image(vars->mlx, 1280, 800);
 	vars->addr = mlx_get_data_addr(vars->img, &vars->bits_per_pixel, &vars->line_length,
@@ -19,12 +33,18 @@ int rend_pic(t_vars *vars)
 	//TODO func to render fract
 	//TODO add user interface
 
+	if (vars->name == 'm')
+		mandelbrot(vars);
+//	if (vars->name == 'j')
+//		julia(vars);
+
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img, 0, 0);
 
+//	text for user can be added here
 	return (0);
 }
 
-int	key_pressed_hook(int keycode, t_vars *vars)
+int	key_hook(int keycode, t_vars *vars)
 {
 	if (keycode == 53)
 	{
@@ -35,15 +55,25 @@ int	key_pressed_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
+int	exit_hook(int keycode, t_vars vars)
+{
+	(void)keycode;
+	(void)vars;
+	exit(0);
+	return(0);
+}
+
 void win_manager(t_vars *vars)
 {
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, 1200, 800, "fractol");
 
-	mlx_expose_hook(vars->win, rend_pic, vars);
-	mlx_hook(vars->win, 2, 0, key_pressed_hook, vars);
+	mlx_hook(vars->win, 12, 0, expose_hook, vars);
+	mlx_hook(vars->win, 2, 0, key_hook, vars);
+	mlx_hook(vars->win, 17, 0, exit_hook,vars);
 
-//	mlx_mouse_hook(vars->win, func_for_mouse, vars);
+
+//	mlx_mouse_hook(vars->win, func_for_mouse, vars); TODO add zoom in and out function
 
 	mlx_loop(vars->mlx);
 }
@@ -55,12 +85,6 @@ void v_fill(t_vars *vars)
 
 int	main(int argc, char **argv)
 {
-//	t_vars	vars;
-//
-//	vars.mlx = mlx_init();
-//	vars.win = mlx_new_window(vars.mlx, 1280, 800, "Hello world!");
-//	mlx_key_hook(vars.win, key_hook, &vars);
-//	mlx_loop(vars.mlx);
 	t_vars	*vars;
 
 	if (argc == 1)
@@ -81,14 +105,4 @@ int	main(int argc, char **argv)
 	else
 		printf("kek2");//TODO add error message
 	return (0);
-
-//	mlx = mlx_init();
-//	vars.win = mlx_new_window(mlx, 720, 480, "Hello world!");
-//	img.img = mlx_new_image(mlx, 720, 480);
-//	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-//								 &img.endian);
-//	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-//	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-
-//	mlx_loop_hook(mlx, render_next_frame, YourStruct);
 }

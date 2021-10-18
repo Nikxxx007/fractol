@@ -34,6 +34,8 @@ typedef struct s_vars
 	int		iter;
 	float 	zoom;
 
+	double jul_val;
+
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -45,7 +47,15 @@ typedef struct s_vars
 	void	*img;
 }				t_vars;
 
-int expose_hook(t_vars *vars);
+int			expose_hook(t_vars *vars);
+int			key_hook(int keycode, t_vars *vars);
+int			exit_hook(int keycode, t_vars *vars);
+
+int			calculation(t_vars *vars);
+int			mouse_hook(int keycode, int x, int y, t_vars *vars);
+
+uint32_t	mandelbrot(t_vars *vars, int x, int y);
+uint32_t	julia(t_vars *vars, int x, int y);
 
 
 #endif //FRACTOL_FRACTOL_H

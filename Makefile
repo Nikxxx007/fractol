@@ -1,6 +1,8 @@
 CC		= gcc
 NAME	= fractol
-SRCS	= src/main.c
+SRCS	= src/main.c \
+			src/hooks.c \
+			src/fractals.c
 
 OBJS		= $(SRCS:.c=.o)
 

@@ -17,24 +17,13 @@
 
 typedef struct s_vars
 {
-//	float				infinity;
-//	int					iteration;
-//	long double			min_x;
 	float			pos_x;
 	float 			pos_y;
-
-	int 		select[3];
-	uint8_t 	color[9][3];
-//	long double			max_y;
-//
-//	int		r;
-//	int 	g;
-//	int		b;
-
 	int		iter;
 	float 	zoom;
 
-	double jul_val;
+	double	jul_x;
+	double	jul_y;
 
 	int		bits_per_pixel;
 	int		line_length;
@@ -56,6 +45,8 @@ int			mouse_hook(int keycode, int x, int y, t_vars *vars);
 
 uint32_t	mandelbrot(t_vars *vars, int x, int y);
 uint32_t	julia(t_vars *vars, int x, int y);
+
+double		ft_atoi_double(const char *str);
 
 
 #endif //FRACTOL_FRACTOL_H

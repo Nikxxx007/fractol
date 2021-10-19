@@ -1,29 +1,41 @@
-#include "libft.h"
+#include "../includes/fractol.h"
 
-int	ft_atoi(const char *str)
+int	check_sign(const char **str)
 {
-	unsigned int	new;
-	int				minus;
-
-	new = 0;
-	minus = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-')
-		minus *= -1;
-	if ((*str == '-') || (*str == '+'))
-		str++;
-	while (*str >= '0' && *str <= '9')
+	if (**str == '-')
 	{
-		new = (new * 10) + (*str - '0');
-		str++;
-		if ((new > 2147483647 && minus == 1)
-			|| (new > 2147483648 && minus == -1))
-		{
-			if (minus == 1)
-				return (-1);
-			return (0);
-		}
+		(*str)++;
+		return (-1);
 	}
-	return ((int)(new * minus));
+	else
+		return(1);
+
+}
+
+double	ft_atoi_double(const char *str)
+{
+	double 	new[2];
+	double 	m_d_c[3];
+
+	new[0] = 0;
+	new[1] = 0;
+	m_d_c[1] = 0;
+	m_d_c[0] = check_sign(&str);
+	while ((*str >= '0' && *str <= '9') || *str == '.')
+	{
+		if (*str == '.')
+		{
+			m_d_c[1] = 1.0;
+			str++;
+		}
+		if (m_d_c[1] == 1.0)
+		{
+			new[1] = (new[1] * 10) + (*str - '0');
+			m_d_c[2]++;
+		}
+		else
+			new[0] = (new[0] * 10) + (*str - '0');
+		str++;
+	}
+	return ((new[0] + (new[1] * pow(0.1, m_d_c[2]))) * m_d_c[0]);
 }

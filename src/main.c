@@ -1,6 +1,6 @@
 #include "../includes/fractol.h"
 
-void	my_mlx_pixel_put(t_vars *vars, int x, int y, int color)
+void	my_mlx_pixel_put(t_vars *vars, int x, int y, unsigned int color)
 {
 	char	*dst;
 
@@ -29,7 +29,6 @@ int	calculation(t_vars *vars)
 		}
 		y++;
 	}
-
 	return(0);
 }
 
@@ -51,11 +50,16 @@ void v_fill(t_vars *vars, char **args)
 	vars->zoom = 0.5;
 	vars->pos_x = 0;
 	vars->pos_y = 0;
-
-
-	if (args[2])
-		vars->jul_val = strtod(args[2], NULL); //TODO remake atoi() for double
-	vars->jul_val = 0;
+	if (args[2] && args[3])
+	{
+		vars->jul_x = ft_atoi_double(args[2]); //TODO remake atoi() for double
+		vars->jul_y = ft_atoi_double(args[3]);
+	}
+	else
+	{
+		vars->jul_x = -0.88232;
+		vars->jul_y = -0.06757;
+	}
 }
 
 int	main(int argc, char **argv)

@@ -1,14 +1,20 @@
 #include "../includes/fractol.h"
 
-uint32_t julia(t_vars *vars, int x, int y)
+void	print_mes()
 {
-	long double mx;
-	long double my;
-	long double c_x;
-	long double c_y;
-	long double x_temp;
+	printf("type: ./fractol julia/mandelbrot ");
+	printf("[value1_julia] [value2_julia]\n");
+}
+
+uint32_t	julia(t_vars *vars, int x, int y)
+{
+	long double	mx; //TODO less variobles and lines
+	long double	my;
+	long double	c_x;
+	long double	c_y;
+	long double	x_temp;
 	int			i;
-	int 		color;
+	int			color;
 
 	i = 0;
 	mx = 0;
@@ -32,15 +38,15 @@ uint32_t julia(t_vars *vars, int x, int y)
 	return (color);
 }
 
-uint32_t mandelbrot(t_vars *vars, int x, int y)
+uint32_t	mandelbrot(t_vars *vars, int x, int y)
 {
-	long double mx;
-	long double my;
-	long double c_x;
-	long double c_y;
-	long double x_temp;
-	int 		i;
-	int 		color;
+	long double	mx;
+	long double	my;
+	long double	c_x;
+	long double	c_y;
+	long double	x_temp;
+	int			i;
+	int			color;
 
 	i = 0;
 	mx = 0.0;

@@ -8,14 +8,13 @@ int	check_sign(const char **str)
 		return (-1);
 	}
 	else
-		return(1);
-
+		return (1);
 }
 
 double	ft_atoi_double(const char *str)
 {
-	double 	new[2];
-	double 	m_d_c[3];
+	double	new[2];
+	double	m_d_c[3];
 
 	new[0] = 0;
 	new[1] = 0;

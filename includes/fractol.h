@@ -17,10 +17,10 @@
 
 typedef struct s_vars
 {
-	float			pos_x;
-	float 			pos_y;
+	double 			pos_x;
+	double 			pos_y;
 	int		iter;
-	float 	zoom;
+	double 	zoom;
 
 	double	jul_x;
 	double	jul_y;

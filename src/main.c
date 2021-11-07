@@ -46,7 +46,7 @@ void win_manager(t_vars *vars)
 void v_fill(t_vars *vars, char **args)
 {
 	vars->name = 'n';
-	vars->iter = 1000;
+	vars->iter = 100;
 	vars->zoom = 0.5;
 	vars->pos_x = 0;
 	vars->pos_y = 0;

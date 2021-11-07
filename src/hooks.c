@@ -48,6 +48,7 @@ int		mouse_hook(int keycode, int x, int y, t_vars *vars)
 	}
 	if (wheel != 0)
 	{
+//		vars->iter += 15;
 		vars->pos_x = ((x * 3.5 / 800.0) - 1.75) / vars->zoom + vars->pos_x;
 		vars->pos_y = ((y * 2.0 / 600.0) - 1) / vars->zoom + vars->pos_y;
 		mlx_destroy_image(vars->mlx, vars->img);

@@ -24,6 +24,8 @@ int	calculation(t_vars *vars)
 				color = mandelbrot(vars, x, y);
 			if (vars->name == 'j')
 				color = julia(vars, x, y);
+			if (vars->name == 's')
+				color = b_ships(vars, x, y);
 			my_mlx_pixel_put(vars, x, y, color);
 			x++;
 		}
@@ -43,17 +45,25 @@ void	win_manager(t_vars *vars)
 	mlx_loop(vars->mlx);
 }
 
-void	v_fill(t_vars *vars, char **args)
+void	v_fill(t_vars *vars, char **argv, int argc)
 {
 	vars->name = 'n';
-	vars->iter = 10;
+	vars->iter = 20;
 	vars->zoom = 0.5;
 	vars->pos_x = 0;
 	vars->pos_y = 0;
-	if (args[2] && args[3])
+	vars->color = 0x00000000;
+	vars->color_diff = 0x00010F0F;
+	vars->shift = 1;
+	if (argc == 4 && (ft_strncmp(argv[1], "Julia", 5) == 0
+			|| ft_strncmp(argv[1], "julia", 5) == 0))
 	{
-		vars->jul_x = ft_atoi_double(args[2]);
-		vars->jul_y = ft_atoi_double(args[3]);
+		check_num(argv[2]);
+		check_num(argv[3]);
+		vars->jul_x = ft_atoi_double(argv[2]);
+		vars->jul_y = ft_atoi_double(argv[3]);
+		if (vars->jul_x >= 2.0 && vars->jul_y >= 2.0)
+			vars->color_diff = 0x0;
 	}
 	else
 	{
@@ -67,18 +77,18 @@ int	main(int argc, char **argv)
 	t_vars	*vars;
 
 	if (argc == 1)
-	{
 		print_mes();
-		exit(2);
-	}
 	vars = (t_vars *) malloc(sizeof(t_vars));
-	v_fill(vars, argv);
+	v_fill(vars, argv, argc);
 	if (ft_strncmp(argv[1], "Julia", 5) == 0
 		|| ft_strncmp(argv[1], "julia", 5) == 0)
 		vars->name = 'j';
 	else if (ft_strncmp(argv[1], "Mandelbrot", 10) == 0
 		|| ft_strncmp(argv[1], "mandelbrot", 10) == 0)
 		vars->name = 'm';
+	else if (ft_strncmp(argv[1], "Ships", 5) == 0
+		|| ft_strncmp(argv[1], "ships", 5) == 0)
+		vars->name = 's';
 	if (vars->name != 'n')
 		win_manager(vars);
 	else

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rogaynel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/16 18:59:47 by rogaynel          #+#    #+#             */
+/*   Updated: 2022/02/16 19:02:06 by rogaynel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	memory_clean(char **new_str, int j)
@@ -26,7 +38,7 @@ void	add_letters(char *string, int len, int pos, const char *source)
 	}
 }
 
-void 	add_words(char const *str, char symb, char **new_str)
+void	add_words(char const *str, char symb, char **new_str)
 {
 	size_t	c_i_j[3];
 

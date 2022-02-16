@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rogaynel <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/16 19:01:17 by rogaynel          #+#    #+#             */
+/*   Updated: 2022/02/16 19:02:34 by rogaynel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -9,7 +21,7 @@ void	*ft_memset(void *destination, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t num, size_t size);
 void	*ft_memcpy(void *destination, const void *source, size_t n);
-void	*ft_memchr (const void *arr, int c, size_t n);
+void	*ft_memchr(const void *arr, int c, size_t n);
 void	*ft_memccpy(void *destination, const void *source, int c, size_t n);
 int		ft_memcmp(const void *buf1, const void *buf2, size_t count);
 void	*ft_memmove(void *destptr, const void *srcptr, size_t num);
@@ -19,7 +31,7 @@ char	*ft_strrchr(const char *string, int symbol);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_strncmp(const char *string1, const char *string2, size_t num);
-size_t	ft_strlcat (char *dst, const char *src, size_t size);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strdup(const char *str);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
